@@ -11,4 +11,5 @@ Color counterItemBG = Colors.grey[200]!;
 // INTEGERS-------------------------------------------------------
 
 const defaultWindowSize = Size(600, 400);
-const popupWindowSize = Size(400, 50);
+const popupWindowSize = Size(350, 50);
+const popupWindowMinSize = Size(300, 50);

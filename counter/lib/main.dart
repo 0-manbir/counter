@@ -4,7 +4,6 @@ import 'package:counter/pages/counter_app.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:window_manager/window_manager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +32,7 @@ class MyApp extends StatelessWidget {
         colorScheme: appColorScheme,
         useMaterial3: false,
       ),
-      home: Scaffold(
+      home: const Scaffold(
         body: CounterApp(),
       ),
     );

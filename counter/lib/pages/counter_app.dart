@@ -6,6 +6,7 @@ import 'package:counter/main.dart';
 import 'package:counter/util/counter_item.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:window_manager/window_manager.dart';
 
 class CounterApp extends StatefulWidget {
   const CounterApp({super.key});
@@ -103,7 +104,7 @@ class _CounterAppState extends State<CounterApp> {
     });
   }
 
-  void _showAsPopup(int index) {
+  void _showAsPopup(int index) async {
     // is Normal View------------------------------
     if (isPopupOpen) {
       setState(() {
@@ -117,6 +118,10 @@ class _CounterAppState extends State<CounterApp> {
         appWindow.title = "Simple Counter";
         appWindow.show();
       });
+
+      await windowManager.ensureInitialized();
+      windowManager.setAlwaysOnTop(false);
+
       return;
     }
 
@@ -128,10 +133,13 @@ class _CounterAppState extends State<CounterApp> {
 
     doWhenWindowReady(() {
       const initialSize = popupWindowSize;
-      appWindow.minSize = const Size(0, 0);
+      appWindow.minSize = popupWindowMinSize;
       appWindow.size = initialSize;
       appWindow.show();
     });
+
+    await windowManager.ensureInitialized();
+    windowManager.setAlwaysOnTop(true);
   }
 
   @override
@@ -324,7 +332,7 @@ class _CounterAppState extends State<CounterApp> {
                     child: Text(
                       '${items[index].count}',
                       style: TextStyle(
-                        fontSize: 24.0,
+                        fontSize: isPopupView ? 20.0 : 24.0,
                         color: Colors.grey[800],
                         fontFamily: 'JetBrainsMono',
                       ),
