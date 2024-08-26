@@ -140,6 +140,7 @@ class _CounterAppState extends State<CounterApp> {
 
     await windowManager.ensureInitialized();
     windowManager.setAlwaysOnTop(true);
+    windowManager.blur();
   }
 
   @override

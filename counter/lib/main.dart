@@ -1,9 +1,7 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:counter/variables.dart';
 import 'package:counter/pages/counter_app.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
